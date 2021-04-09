@@ -82,13 +82,14 @@ class CreateEditContact extends StatelessWidget {
                   onPressed: (){
                     if (formKey.currentState.validate()){
                       Contact contact = new Contact(
+                        id: contactEdit?.id??0,
                         fName: fNameController.text,
                         lName: lNameController.text,
                         phone: phoneController.text,
                       );
 
                       if(contactEdit!=null){
-                        Provider.of<ContactProvider>(context, listen: false).editContact(contact, index);
+                        Provider.of<ContactProvider>(context, listen: false).editContact(contact);
                       } else{
                       Provider.of<ContactProvider>(context, listen: false).addContact(contact);
                     }

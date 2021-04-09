@@ -12,6 +12,9 @@ class ContactListPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Consumer<ContactProvider>(builder: (BuildContext context, ContactProvider contacts, Widget child){
+        if(contacts.getContacts().isEmpty){
+          contacts.getAllContacts();
+        }
         if (contacts.getContacts().isNotEmpty)
         return ListView.builder(
             itemCount: contacts.getContacts().length,
